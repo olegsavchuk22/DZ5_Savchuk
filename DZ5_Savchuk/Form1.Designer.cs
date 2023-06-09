@@ -51,7 +51,7 @@
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 1;
-            button1.Text = "button1";
+            button1.Text = "Додати";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
@@ -61,7 +61,7 @@
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 2;
-            button2.Text = "button2";
+            button2.Text = "Редагувати";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
@@ -71,7 +71,7 @@
             button3.Name = "button3";
             button3.Size = new Size(75, 23);
             button3.TabIndex = 3;
-            button3.Text = "button3";
+            button3.Text = "Видалити";
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 

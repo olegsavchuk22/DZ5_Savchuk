@@ -73,10 +73,10 @@ namespace DZ5_Savchuk
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+
             int selectedRowId = (int)dataGridView1.CurrentRow.Cells["Id"].Value;
 
-            
+
 
             using (LibraryDbContext dbContext = new LibraryDbContext())
             {
@@ -111,7 +111,7 @@ namespace DZ5_Savchuk
                             // якщо видавництво не знайдене, створити новий запис дл€ видавництва
                             publisher = new Publisher
                             {
-                                Id=book.PublisherId,
+                                Id = book.PublisherId,
                                 PublisherName = form.PublisherName,
                                 Address = form.PublisherAddress
                             };
