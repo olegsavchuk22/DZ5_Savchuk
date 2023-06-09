@@ -73,10 +73,7 @@ namespace DZ5_Savchuk
 
         private void button2_Click(object sender, EventArgs e)
         {
-
             int selectedRowId = (int)dataGridView1.CurrentRow.Cells["Id"].Value;
-
-
 
             using (LibraryDbContext dbContext = new LibraryDbContext())
             {
@@ -91,31 +88,29 @@ namespace DZ5_Savchuk
                     // ¬≥дображаЇмо форму редагуванн€
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        author = dbContext.Authors.FirstOrDefault(a => a.FirstName == form.AuthorFName && a.LastName == form.AuthorLName);
+                        author = dbContext.Authors.FirstOrDefault(a => a.FirstName == form.AuthorFName && a.LastName == form.AuthorLName && a.Id == book.AuthorId);
                         if (author == null)
                         {
                             // якщо автор не знайдений, створити новий запис дл€ автора
                             author = new Author
                             {
-                                Id = book.AuthorId,
                                 FirstName = form.AuthorFName,
                                 LastName = form.AuthorLName,
                             };
-                            dbContext.Authors.Add(author);
+                            dbContext.Authors.Update(author);
                             dbContext.SaveChanges();
                         }
 
-                        publisher = dbContext.Publishers.FirstOrDefault(p => p.PublisherName == form.PublisherName && p.Address == form.PublisherAddress);
+                        publisher = dbContext.Publishers.FirstOrDefault(p => p.PublisherName == form.PublisherName && p.Address == form.PublisherAddress && p.Id == book.PublisherId);
                         if (publisher == null)
                         {
                             // якщо видавництво не знайдене, створити новий запис дл€ видавництва
                             publisher = new Publisher
                             {
-                                Id = book.PublisherId,
                                 PublisherName = form.PublisherName,
                                 Address = form.PublisherAddress
                             };
-                            dbContext.Publishers.Add(publisher);
+                            dbContext.Publishers.Update(publisher);
                             dbContext.SaveChanges();
                         }
 

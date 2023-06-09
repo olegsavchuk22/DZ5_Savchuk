@@ -44,12 +44,13 @@ namespace DZ5_Savchuk
         }
         public int Price
         {
-            get { return int.Parse(textBox6.Text); }
+            get { return int.Parse(textBox7.Text); }
 
         }
         public AddEditForm()
         {
             InitializeComponent();
+            this.Text = "Add Form";
         }
         public AddEditForm(string afn, string aln, string pn, string pa, string bt, int pg, int pr)
         {
@@ -61,11 +62,17 @@ namespace DZ5_Savchuk
             textBox5.Text = bt;
             textBox6.Text = pg.ToString();
             textBox7.Text = pr.ToString();
+            this.Text = "Edit Form";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }
