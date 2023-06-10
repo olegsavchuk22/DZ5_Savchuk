@@ -27,7 +27,6 @@ namespace DZ5_Savchuk
                         Pages = x.Pages,
                         PublisherName = x.Publisher.PublisherName,
                         PublisherAddress = x.Publisher.Address
-
                     })
                 .ToList();
 
@@ -64,7 +63,6 @@ namespace DZ5_Savchuk
                     {
                         MessageBox.Show("Цієї книжки не існує у всесвіті!)");
                     }
-
                 }
                 db.SaveChanges();
             }
@@ -80,7 +78,6 @@ namespace DZ5_Savchuk
                 Book book = dbContext.Books.FirstOrDefault(b => b.Id == selectedRowId);
                 if (book != null)
                 {
-                    // Заповнюємо поля форми редагування зі значеннями з вибраного запису
                     Author author = dbContext.Authors.FirstOrDefault(a => a.Id == book.AuthorId);
                     Publisher publisher = dbContext.Publishers.FirstOrDefault(p => p.Id == book.PublisherId);
                     AddEditForm form = new AddEditForm(book.Author.FirstName, book.Author.LastName, book.Publisher.PublisherName, book.Publisher.Address, book.Title, (int)book.Pages, (int)book.Price);
@@ -91,7 +88,6 @@ namespace DZ5_Savchuk
                         author = dbContext.Authors.FirstOrDefault(a => a.FirstName == form.AuthorFName && a.LastName == form.AuthorLName && a.Id == book.AuthorId);
                         if (author == null)
                         {
-                            // Якщо автор не знайдений, створити новий запис для автора
                             author = new Author
                             {
                                 FirstName = form.AuthorFName,
@@ -104,7 +100,6 @@ namespace DZ5_Savchuk
                         publisher = dbContext.Publishers.FirstOrDefault(p => p.PublisherName == form.PublisherName && p.Address == form.PublisherAddress && p.Id == book.PublisherId);
                         if (publisher == null)
                         {
-                            // Якщо видавництво не знайдене, створити новий запис для видавництва
                             publisher = new Publisher
                             {
                                 PublisherName = form.PublisherName,
@@ -114,7 +109,6 @@ namespace DZ5_Savchuk
                             dbContext.SaveChanges();
                         }
 
-                        // Оновлюємо значення полів вибраного запису
                         book.Title = form.BookTitle;
                         book.AuthorId = author.Id;
                         book.Pages = form.Pages;
@@ -176,16 +170,6 @@ namespace DZ5_Savchuk
                     dbContext.SaveChanges();
                 }
             }
-            LoadData();
-        }
-        public void AddData()
-        {
-
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
             LoadData();
         }
     }
